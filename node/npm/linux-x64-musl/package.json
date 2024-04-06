@@ -37,5 +37,8 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "repository": "https://github.com/h-a-n-a/magic-string-rs.git"
+  "repository": "https://github.com/h-a-n-a/magic-string-rs.git",
+  "libc": [
+    "musl"
+  ]
 }
