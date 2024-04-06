@@ -54,7 +54,7 @@ jobs:
             docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
             build: |
               yarn build --target aarch64-unknown-linux-gnu
-              aarch64-linux-gnu-strip node/magic-string-rs.linux-arm64-gnu.node
+              llvm-strip node/magic-string-rs.linux-arm64-gnu.node
           - host: ubuntu-latest
             target: 'armv7-unknown-linux-gnueabihf'
             setup: |
@@ -67,12 +67,12 @@ jobs:
             target: 'aarch64-linux-android'
             build: |
               yarn build --target aarch64-linux-android
-              ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip node/*.node
+              ${ANDROID_NDK_LATEST_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip node/*.node
           - host: ubuntu-latest
             target: 'armv7-linux-androideabi'
             build: |
               yarn build --target armv7-linux-androideabi
-              ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip node/*.node
+              ${ANDROID_NDK_LATEST_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip node/*.node
           - host: ubuntu-latest
             target: 'aarch64-unknown-linux-musl'
             docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-alpine
